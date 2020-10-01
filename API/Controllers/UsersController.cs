@@ -3,13 +3,12 @@
 // Project Name: API
 // File Name: UsersController.cs
 // Created on: 09/28/2020 at 12:40 PM
-// Edited on: 09/28/2020 at 12:53 PM
+// Edited on: 09/30/2020 at 11:32 PM
 // Developed and Copyrighted by ProHealth Pharmacy Solutions, LLC.
 
 #region imports
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entity;

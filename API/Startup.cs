@@ -3,25 +3,17 @@
 // Project Name: API
 // File Name: Startup.cs
 // Created on: 09/26/2020 at 9:25 AM
-// Edited on: 09/28/2020 at 12:52 PM
+// Edited on: 09/30/2020 at 11:32 PM
 // Developed and Copyrighted by ProHealth Pharmacy Solutions, LLC.
 
 #region imports
 
-using System.Text;
-using API.Data;
-using API.DTOs;
 using API.Extensions;
-using API.Interfaces;
-using API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 #endregion
@@ -64,7 +56,7 @@ namespace API
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthentication();
-            
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

@@ -1,4 +1,13 @@
-using System;
+// Created by Derek Kennard (DerekKennard)
+// Solution: DatingApp
+// Project Name: API
+// File Name: AccountController.cs
+// Created on: 09/29/2020 at 8:47 PM
+// Edited on: 09/30/2020 at 11:32 PM
+// Developed and Copyrighted by ProHealth Pharmacy Solutions, LLC.
+
+#region imports
+
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +17,8 @@ using API.Entity;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+#endregion
 
 namespace API.Controllers
 {
@@ -26,7 +37,7 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
-                            
+
             using var hmac = new HMACSHA512();
 
             var user = new AppUser
@@ -56,15 +67,14 @@ namespace API.Controllers
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
 
             if (user == null) return Unauthorized("Invalid Username");
-            
+
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
             var computerHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
-            
-            for (int i = 0; i < computerHash.Length; i++)
-            {
-                if (computerHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
-            }
+
+            for (var i = 0; i < computerHash.Length; i++)
+                if (computerHash[i] != user.PasswordHash[i])
+                    return Unauthorized("Invalid Password");
 
             return new UserDto
             {

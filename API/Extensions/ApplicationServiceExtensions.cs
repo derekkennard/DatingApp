@@ -1,10 +1,12 @@
 // Created by Derek Kennard (DerekKennard)
 // Solution: DatingApp
 // Project Name: API
-// File Name: ApplicationServicesExtensions.cs
+// File Name: ApplicationServiceExtensions.cs
 // Created on: 09/30/2020 at 12:36 AM
-// Edited on: 09/30/2020 at 12:36 AM
+// Edited on: 09/30/2020 at 11:32 PM
 // Developed and Copyrighted by ProHealth Pharmacy Solutions, LLC.
+
+#region imports
 
 using API.Data;
 using API.Interfaces;
@@ -12,6 +14,8 @@ using API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+#endregion
 
 namespace API.Extensions
 {
@@ -26,6 +30,5 @@ namespace API.Extensions
             });
             return services;
         }
-        
     }
 }
